@@ -1,5 +1,7 @@
 # Orchestra sviluppo
 
+[Italiano](README.md) | [English](README.en.md)
+
 Skill per pianificare e coordinare sviluppi complessi con package indipendenti, ownership dei file,
 un tester separato e checkpoint verificabili. Il repository contiene due versioni autonome per
 **Claude Code** e **Codex**. Si sceglie la versione per il proprio harness, cioè l'ambiente che
