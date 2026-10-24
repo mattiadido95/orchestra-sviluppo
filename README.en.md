@@ -172,3 +172,15 @@ Update both copies when the shared method changes. `SKILL.md`, `references/proto
 documentation and the tools actually exposed by the runtime:
 [Claude Code messaging](https://code.claude.com/docs/en/cross-session-messaging) and
 [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents).
+
+## Experimental Flow Editor + Paseo integration (Codex only)
+
+The `codex/` variant includes an explicit, optional Paseo mode. Flow Editor launches the
+orchestrator; after plan approval, it starts workers and the tester as Codex sessions in the same
+local Paseo daemon and workspace. See [the Paseo protocol](codex/references/paseo.md).
+
+Paseo Desktop, a compatible CLI, and Codex authenticated with ChatGPT must already be available.
+Nothing is installed automatically. Session usage shares your plan limits; roles do not create
+separate sandboxes. Existing authorization rules and artifacts still apply. This initial
+integration uses existing local directories and does not create worktrees. Native delegation
+remains the default, and the Claude variant is unchanged. Manual integration testing is pending.

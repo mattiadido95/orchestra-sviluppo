@@ -163,3 +163,18 @@ e `templates/AVVIO.md` sono specifici dell'harness. Per le capacità native usa 
 corrente e i tool realmente esposti:
 [Claude Code messaging](https://code.claude.com/docs/en/cross-session-messaging) e
 [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents).
+
+## Integrazione sperimentale Flow Editor + Paseo (solo Codex)
+
+La variante `codex/` supporta una modalità Paseo **opzionale ed esplicita**, distinta dalla delega
+nativa. Flow Editor può aprire l'orchestratore dall'apposito nodo; dopo l'approvazione del piano,
+questo crea worker e tester come sessioni Codex nello stesso daemon e workspace Paseo.
+Il dettaglio è in [codex/references/paseo.md](codex/references/paseo.md).
+
+La modalità richiede Paseo Desktop, la CLI compatibile e Codex già autenticato con ChatGPT sullo
+stesso host locale. Nessun tool viene installato automaticamente. Le sessioni condividono i limiti
+del piano; i ruoli non creano sandbox separati. Le regole di autorizzazione e gli artifact restano
+validi. La prima integrazione usa directory locali già esistenti, senza creare worktree.
+
+La variante Claude resta autonoma. Il riferimento Paseo è parte della cartella `codex/`: copia
+sempre la variante completa. L'integrazione richiede collaudo manuale e non è dichiarata validata.

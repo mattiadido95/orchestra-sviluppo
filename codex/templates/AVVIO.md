@@ -1,17 +1,28 @@
 # Avvio — <slug> — Codex
 
+## Modalità selezionata
+
+- Runtime: <nativo, oppure Paseo esplicitamente autorizzato>.
+- Per Paseo: host locale, workspace ID, `FLOW_EDITOR_RUN`, CLI e autenticazione Codex,
+  percorso della skill e autorizzazioni effettive per ciascuna sessione.
+- Con Flow Editor: scegli **Paseo · solo Codex**, quindi **Avvia in Paseo** sul nodo.
+  L'estensione prepara e apre l'orchestratore; il piano approvato determina worker e tester.
+- Per Paseo consulta [il protocollo dedicato](../references/paseo.md) nella skill installata:
+  i prompt dei ruoli qui sotto restano validi, ma si inviano a sessioni Paseo.
+
 ## Prerequisiti raccolti
 
 - Chat principale: <contesto dello sviluppo>.
 - Copia principale: <percorso assoluto>.
 - Artifact correnti: <percorso assoluto>.
 - Contesto, analisi, contratto e piano approvati: <riferimenti>.
-- Capacità native di delega: <tool e limiti effettivamente esposti>.
+- Capacità di delega del runtime selezionato: <tool e limiti effettivamente esposti>.
 - Copie isolate: <disponibili oppure creazione a carico del responsabile registrato>.
 - Autorizzazioni e comandi: <sezioni di CONTESTO.md>.
 
-Non servono terminali con sessioni separate per ciascun ruolo. I subagent vengono creati
-dall'orchestratore dopo l'approvazione del piano; non sono nuove chat utente da aprire con plugin.
+In modalità nativa non servono terminali separati: i subagent vengono creati dall'orchestratore
+dopo l'approvazione del piano. In modalità Paseo ogni ruolo ha invece una sessione Codex visibile
+nell'app; non aprire manualmente altre sessioni per sostituire quelle già registrate.
 
 ## Richiesta nella chat principale
 

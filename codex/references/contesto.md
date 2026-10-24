@@ -31,7 +31,10 @@ Non leggere valori di credenziali: registra soltanto nomi delle variabili e moda
    fonte e chi lo può eseguire. Non installare nulla durante la ricognizione.
 3. **Collaborazione**: capacità effettivamente esposte dall'harness per assegnare, comunicare,
    attendere e riprendere; condivisione del filesystem; limite di concorrenza se noto; limiti di
-   accesso alle directory. Usa il protocollo specifico di questa versione della skill.
+   accesso alle directory. Registra la modalità scelta: nativa oppure Paseo. Per Paseo registra
+   host locale, workspace ID e gruppo Flow Editor, CLI effettiva, provider Codex, autenticazione
+   tramite ChatGPT e permessi di ogni sessione. Non installare o avviare servizi per scoprirli.
+   Usa il protocollo specifico di questa versione della skill.
 4. **Integrazione**: branch base e di consegna, strategia di integrazione, pulizia richiesta,
    strumenti per copie isolate e isolamento di porte, output di build, dati e servizi. Senza
    autorizzazione a Git, chiedi all'utente solo le informazioni che non emergono dai documenti.

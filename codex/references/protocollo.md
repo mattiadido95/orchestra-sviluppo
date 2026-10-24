@@ -1,4 +1,10 @@
-# Protocollo — subagent nativi di Codex
+# Protocollo — Codex
+
+La modalità predefinita usa subagent nativi. Se è stata selezionata esplicitamente Paseo,
+[paseo.md](paseo.md) sostituisce soltanto creazione, trasporto dei messaggi, attesa e recupero:
+le regole di piano, ownership, autorizzazioni, ondate ed esiti qui sotto restano applicabili.
+In Paseo i permessi sono quelli di ciascuna sessione Codex configurata sul daemon: non assumere
+l'eredità dei permessi dei subagent nativi. Non usare contemporaneamente due meccanismi di delega.
 
 ## Capacità e ruoli
 

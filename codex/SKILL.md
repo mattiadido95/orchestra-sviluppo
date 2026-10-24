@@ -1,6 +1,6 @@
 ---
 name: orchestra-sviluppo
-description: Pianifica ed esegue sviluppi complessi con checkpoint verificabili e package indipendenti, coordinando subagent nativi di Codex. Usa per un workflow orchestrato esplicitamente richiesto, non per modifiche piccole o attività interamente seriali.
+description: Pianifica ed esegue sviluppi complessi con checkpoint verificabili e package indipendenti, coordinando Codex tramite subagent nativi oppure sessioni Paseo esplicitamente selezionate. Usa per un workflow orchestrato esplicitamente richiesto, non per modifiche piccole o attività interamente seriali.
 ---
 
 # Orchestra sviluppo — Codex
@@ -18,8 +18,11 @@ di argomenti o un comando slash di un altro harness.
 - **Ondate**: package con dipendenze soddisfatte e ownership disgiunta, assegnati a worker.
 - **Copie isolate**: opzionali; un subagent non crea automaticamente un worktree o un ambiente.
 
-La chat principale è l'orchestratore. Durante `esegui`, dopo l'approvazione del piano, usa subagent
-nativi per i package indipendenti e un tester separato. Questa è un'istruzione di delega per
+La chat principale è l'orchestratore. La modalità predefinita usa subagent nativi. Se la richiesta
+o CONTESTO.md seleziona esplicitamente **Paseo**, leggi [paseo.md](references/paseo.md):
+orchestratore, worker e tester sono sessioni Codex gestite da Paseo, senza subagent nativi.
+Durante `esegui`, dopo l'approvazione del piano, usa i collaboratori della modalità selezionata
+per i package indipendenti e un tester separato. Questa è un'istruzione di delega per
 l'esecuzione dello sviluppo, non per la sola raccolta o per la manutenzione di questa skill.
 Se il grafo è seriale, raccomanda uno sviluppo seriale e non creare agenti per simulare parallelismo.
 
@@ -45,7 +48,8 @@ non si richiedono nuovamente.
   eventuali regole locali di piano e approvazione anche per la creazione degli artifact.
 - Usa solo strumenti realmente esposti. Rileva capacità e schema dei tool nel contesto corrente;
   non inventare flag CLI per ruoli, API di messaggistica o file di configurazione necessari.
-- I subagent ereditano sandbox e approvazioni del parent. I limiti di ruolo nel prompt e l'ownership
+- In modalità nativa i subagent ereditano sandbox e approvazioni del parent; in Paseo si applicano
+  quelli di ciascuna sessione Codex. I limiti di ruolo nel prompt e l'ownership
   non creano isolamento tecnico: non dichiarare permessi separati o accessi in sola lettura.
 - La matrice di `CONTESTO.md` stabilisce chi esegue i comandi. Senza delega valida Git,
   installazioni, test, lint, build, avvii e azioni esterne restano all'utente.
@@ -55,7 +59,8 @@ non si richiedono nuovamente.
   nel `FINITO`. Un risultato del subagent non è un'approvazione dell'utente.
 - Dall'OK alla consegna di un checkpoint, congela la copia principale. Il lavoro successivo usa
   solo copie isolate autorizzate, oppure attende.
-- Non creare chat utente o mandare messaggi ad altre chat per sostituire i subagent. Se i tool
+- In modalità nativa non creare chat utente o mandare messaggi ad altre chat per sostituire i subagent.
+  La modalità Paseo autorizzata usa invece le sessioni del gruppo secondo il riferimento dedicato. Se i tool
   necessari mancano, segnala il limite e concorda una modalità supportata, senza cambiare settings.
 - Niente segreti negli artifact o nei messaggi. Segnala problemi fuori scope senza correggerli.
 
